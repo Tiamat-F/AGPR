@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Persona Reviews</title>
+    <style>
+        /* Lightweight CSS */
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; background: #f4f4f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #5c67f2; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Anime Persona Reviews</h1>
+
+    <!-- Form to add a review -->
+    <div class="card">
+        <h3>Submit a Review</h3>
+        <input type="text" id="charName" placeholder="Character Name">
+        <textarea id="charReview" placeholder="Describe her personality..."></textarea>
+        <button onclick="addReview()">Post Review</button>
+    </div>
+
+    <!-- Container for reviews -->
+    <div id="reviewsContainer"></div>
+
+    <script>
+        // Simple JS to handle reviews
+        function addReview() {
+            const name = document.getElementById('charName').value;
+            const review = document.getElementById('charReview').value;
+            
+            if(name && review) {
+                const container = document.getElementById('reviewsContainer');
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.innerHTML = `<strong>${name}</strong><p>${review}</p>`;
+                container.prepend(div);
+                
+                // Clear inputs
+                document.getElementById('charName').value = '';
+                document.getElementById('charReview').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
